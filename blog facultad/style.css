@@ -83,4 +83,6 @@ body {
   font-size: 0.9rem;
   color: #777;
 }
-
+nav a {
+  margin: 5px
+}
