@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soundboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="soundboard">
+    <h1 class="section-title">BOTONERA</h1>
+    <div class="sound-buttons">
+      <button onclick="playSound('sound1')">Sonido 1</button>
+      <button onclick="playSound('sound2')">Sonido 2</button>
+      <button onclick="playSound('sound3')">Sonido 3</button>
+    </div>
+  </main>
+
+  <a href="../index.html" class="back-button">Volver</a>
+
+  <footer class="footer">
+    <p>&copy; 2025 Joaquin Ferreira. All rights reserved.</p>
+  </footer>
+
+  <audio id="sound1" src="sonidos/sound1.mp3"></audio>
+  <audio id="sound2" src="sonidos/sound2.mp3"></audio>
+  <audio id="sound3" src="sonidos/sound3.mp3"></audio>
+
+  <script>
+    let currentSoundId = null;
+
+    function playSound(id) {
+      const audio = document.getElementById(id);
+      if (!audio) return;
+
+      if (currentSoundId === id && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+        currentSoundId = null;
+      } else {
+        if (currentSoundId && currentSoundId !== id) {
+          const currentAudio = document.getElementById(currentSoundId);
+          if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+          }
+        }
+        audio.currentTime = 0;
+        audio.play();
+        currentSoundId = id;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="calculator">
+    <h1 class="section-title">CALCULADORA</h1>
+    <input type="text" id="display" disabled>
+    <div class="calculator-buttons">
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('/')">/</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('*')">*</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('-')">-</button>
+
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="append('+')">+</button>
+
+      <button onclick="clearDisplay()" style="grid-column: span 4; background-color: #ff4d4d; color: white;">Borrar
+      </button>
+    </div>
+  </main>
+
+  <a href="../index.html" class="back-button">Volver</a>
+
+  <footer class="footer">
+    <p>&copy; 2025 Joaquin Ferreira. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function append(char) {
+      display.value += char;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (e) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>

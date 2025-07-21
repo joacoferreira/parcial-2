@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Fotográfica | Joaquín Ferreira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navigation">
+            <ul class="menu-list">
+                <li><a href="../index.html">Volver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section">
+        <h1 class="title">Mi Galeria</h1>
+        <p class="subtitle">Recuerdos de mi vida</p>
+        
+        <div class="galeria"></div>
+         <div class="button-container">
+            <a href="../index.html" class="button">Volver</a>
+        </div>
+    </section>
+    </section>
+    <div class="lightbox">
+        <button class="lightbox-btn prev">❮</button>
+        <div class="lightbox-content">
+            <img src="" alt="Imagen ampliada" class="lightbox-img">
+            <span class="image-counter"></span>
+        </div>
+        <button class="lightbox-btn next">❯</button>
+        <button class="lightbox-close" title="Cerrar">×</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Joaquin Ferreira. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const imagenesGaleria = [
+            { src: '../imagenes/img1.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img2.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img3.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img4.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img5.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img6.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img7.jpg', alt: 'Bariloche' },
+            { src: '../imagenes/img8.jpg', alt: 'Zeko' },
+            { src: '../imagenes/img9.jpg', alt: 'Costa salguero' }
+        ];
+
+        const galeria = document.querySelector('.galeria');
+        
+        imagenesGaleria.forEach((imagen, index) => {
+            const galeriaItem = document.createElement('div');
+            galeriaItem.className = 'galeria-item';
+            
+            const img = document.createElement('img');
+            img.src = imagen.src;
+            img.alt = imagen.alt;
+            img.dataset.index = index;
+            
+            galeriaItem.appendChild(img);
+            galeria.appendChild(galeriaItem);
+        });
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = document.querySelector('.lightbox-img');
+        const imageCounter = document.querySelector('.image-counter');
+        let currentIndex = 0;
+
+        galeria.addEventListener('click', function(e) {
+            const clickedImg = e.target.closest('img');
+            if (clickedImg) {
+                currentIndex = parseInt(clickedImg.dataset.index);
+                mostrarImagen(currentIndex);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        function mostrarImagen(index) {
+            if (index >= 0 && index < imagenesGaleria.length) {
+                currentIndex = index;
+                const imagen = imagenesGaleria[currentIndex];
+                lightboxImg.src = imagen.src;
+                lightboxImg.alt = imagen.alt;
+                imageCounter.textContent = `${currentIndex + 1} / ${imagenesGaleria.length}`;
+            }
+        }
+        document.querySelector('.lightbox-btn.prev').addEventListener('click', function(e) {
+            e.stopPropagation();
+            mostrarImagen(currentIndex - 1);
+        });
+
+        document.querySelector('.lightbox-btn.next').addEventListener('click', function(e) {
+            e.stopPropagation();
+            mostrarImagen(currentIndex + 1);
+        });
+        document.querySelector('.lightbox-close').addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.classList.contains('active')) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        mostrarImagen(currentIndex - 1);
+                        break;
+                    case 'ArrowRight':
+                        mostrarImagen(currentIndex + 1);
+                        break;
+                    case 'Escape':
+                        lightbox.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
