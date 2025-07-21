@@ -3,18 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linktree</title>
+  <title>Portafolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <img src="imagenes/eye.jpg" alt="Foto de perfil" class="profile-pic">
-    <h1>Pedro Joaquin Ferreira</h1>
-    <h3>Estudiante de Desarrollo de Software</h3>
-    <a href="Mi identikit Pedro Joaquin Ferreira/index.html" class="boton">Mi Pagina Web - Identikit</a>
-    <a href="blog facultad/index.html" class="boton">Mi blog - PlatinoGear</a>
-    <a href="portafolio/index.html" class="boton">Mi portfolio</a>
-    <a href="https://mail.google.com/mail/?view=cm&to=horuscontactt@gmail.com" target="_blank" class="boton">Unica via de contacto</a>
+  <header id="header" class="navbar">
+    <nav class="navigation">
+      <ul class="menu-list">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobremi">Sobre mi</a></li>
+        <li><a href="../index.html">Linktree</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <section id="sobremi" class="section about">
+    <h2 class="section-title">Sobre mi</h2>
+    <p class="text">Me llamo Joaquin y estoy estudiando Desarrollo de Software. Por el momento estoy fortaleciendome en HTML, CSS y Python.</p>
+  </section>
+
+<section id="projects" class="section projects">
+  <h2 class="section-title">Proyectos</h2>
+  <div class="project-cards">
+    <div class="card">
+      <h3 class="project-title">Calculadora</h3>
+      <a href="calculadora.html/index.html" class="button">Abrir proyecto</a>
+    </div>
+    <div class="card">
+      <h3 class="project-title">Botonera de sonidos</h3>
+      <a href="botonera.html/index.html" class="button">Abrir proyecto</a>
+    </div>
+        <div class="card">
+      <h3 class="project-title">Galeria</h3>
+      <a href="galeria/index.html" class="button">Abrir proyecto</a>
+    </div>
   </div>
+</section>
+
+  <section id="contacto" class="section contact">
+    <h2 class="section-title">Contacto</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Nombre" class="input">
+      <input type="email" placeholder="Email" class="input">
+      <textarea placeholder="Mensaje" class="textarea"></textarea>
+      <button type="submit" class="button">enviar</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Joaquin Ferreira. All rights reserved.</p>
+    <a href="https://github.com/joacoferreira">GitHub</a> <a href="https://www.instagram.com/joacoferreira_/">Instagram</a><a href=""></a>
+  </footer>
 </body>
 </html>
+
